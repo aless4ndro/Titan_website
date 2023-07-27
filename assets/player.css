@@ -1,0 +1,185 @@
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.35s linear;
+}
+
+
+section {
+
+    --bg-color: #18705e;
+    --main-color: #cdff79;
+    --dark-color: #004c3d;
+    background-color: var(--bg-color);
+    min-height: 480px;
+    display: grid;
+    place-content: center;
+    width: 480px;
+    display:none;
+    position: fixed;
+}
+
+.audio {
+    width: 480px;
+    height: 480px;
+    position: relative;
+}
+
+section.active {
+    display: grid;
+}
+
+
+.audio .progress {
+    position: relative;
+    top: 240px;
+    left: 0;
+    z-index: 1;
+}
+
+.audio .progress span {
+    background-color: var(--dark-color);
+    width: 56px;
+    height: 5px;
+    border-radius: 4px;
+    display: block;
+    position: relative;
+    transform-origin: 240px;
+    transform: rotateZ(calc(var(--i) * 3.6deg));
+}
+
+.audio .progress span.active {
+    background-color: var(--main-color);
+}
+
+.audio .progress span:hover {
+    background-color: var(--main-color);
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.audio .info {
+    position: absolute;
+    z-index: 2;
+    width: 420px;
+    height: 420px;
+    top: 30px;
+    left: 30px;
+    backdrop-filter: blur(20px) brightness(125%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.audio .thumbnail {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 0.5rem;
+    border: 3px solid var(--main-color);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.audio img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.audio .play_pause {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    place-content: center;
+    color: white;
+    font-size: 5rem;
+    cursor: pointer;
+    transform: scale(2);
+    opacity: 0;
+}
+
+.audio .thumbnail:hover .play_pause {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.audio .volume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 1rem auto;
+    gap: 1rem
+}
+
+.audio .volume span {
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-color);
+    color: var(--main-color);
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    transform: scale(1);
+}
+
+.audio .volume:hover span {
+    background-color: var(--bg-color);
+    transform: scale(1);
+}
+
+.audio .volume span {
+    background-color: var(--dark-color);
+}
+
+.audio .volume-progress {
+    width: 150px;
+    height: 8px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+}
+
+
+
+.audio .volume-bar {
+    width: 50%;
+    height: 8px;
+    background-color: var(--main-color);
+    border-radius: 8px;
+}
+
+.audio .song {
+    text-align: center;
+    margin-block-end: 0.75rem;
+    color: var(--main-color);
+}
+
+.audio .song .name {
+    line-height: 2.25rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.audio .song .singer {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-block-start: 0.25rem;
+}
+
+.audio .time {
+    text-align: center;
+    color: white;
+}

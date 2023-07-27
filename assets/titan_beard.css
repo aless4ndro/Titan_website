@@ -1,0 +1,164 @@
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card-body {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    color: black; /* Vous pouvez choisir la couleur de votre texte ici */
+   
+   
+}
+
+.overlay {
+    top: -10%;
+    left: 0;
+}
+
+p {
+    font-family: 'Karla', sans-serif;
+    font-size: 18px;
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+.apropos {
+    width: 700px;
+    left: 64px;
+    top: 344px;
+    position: absolute;
+    color: #E2E0E0;
+    font-size: 35px;
+    font-family: Titan One;
+    font-weight: 400;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+
+.tristan {
+    width: 1088px; 
+    height: 280px; 
+    left: 126px; 
+    top: 0px; 
+    position: absolute; 
+    opacity: 0.85;
+    color: #D9D9D9; 
+    font-size: 182px; 
+    font-family: Titan One; 
+    font-weight: 400; 
+    text-transform: uppercase; 
+    word-wrap: break-word;
+}
+
+.beard {
+    width: 736px; 
+    height: 233px; 
+    left: 586px; 
+    top: 177px; 
+    position: absolute; 
+    opacity: 0.85; 
+    color: #E2E0E0; 
+    font-size: 182px; 
+    font-family: Titan One; 
+    font-weight: 400; 
+    text-transform: uppercase; 
+    word-wrap: break-word;
+}
+
+.right-border {
+    width: 100%; 
+    height: 100%; 
+    left: 980px;
+    right: 177px; 
+    border: 2px #A4A38F solid;
+}
+
+
+.border-one {
+    width: 320px; 
+    height: 0px; 
+    left: 986px; 
+    top: 177px; 
+    position: absolute; 
+    margin-top: 55px;
+    border: 2px #A4A38F solid;
+}
+
+.border-two {
+    width: 1330px; 
+    height: 0px; 
+    left: 48px; 
+    top: 202px; 
+    position: absolute; 
+    margin-top: 55px;
+    border: 2px #A4A38F solid;
+}
+
+.border-three {
+    width: 526px; 
+    height: 0px; 
+    left: 0px; 
+    margin-top: 55px;
+    top: 235px; 
+    position: absolute; 
+    border: 2px #A4A38F solid;
+}
+
+.music-icon {
+    width: 100px; 
+    height: 100px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    
+}
+
+
+
+
+
+
+
+/* Pour les écrans de moins de 600px de large */
+@media (max-width: 600px) {
+    .card-body {
+        height: 500px;
+
+    }
+   
+    
+}
+
+
+/* Pour les écrans de 600px à 900px de large */
+@media (min-width: 601px) and (max-width: 900px) {
+    .card-body {
+        height: 80vh;
+    }
+    
+}
+
+/* Pour les écrans de plus de 900px de large */
+@media (min-width: 901px) {
+    .card-body {
+        height: 1142px;
+    }
+    
+}
+
+/* Pour les écrans de plus de 1200px de large */
+@media (min-width: 1200px) {
+    .card-body {
+        width: 100%;
+        height: 1142px;
+        
+
+    }
+    
+}

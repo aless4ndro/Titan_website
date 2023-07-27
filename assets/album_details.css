@@ -1,0 +1,39 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #160840 !important;
+}
+
+.container {
+
+  color: #fff;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 1.5rem 0;
+  font-family: "Titan One";
+}
+
+.card {
+  padding: 0.5rem;
+  margin-bottom: 6rem;
+}
+
+.tilte_audio {
+  font-size: 1rem;
+  font-family: "roboto";
+}
+
+.p {
+  font-size: 0.9rem;
+  font-family: "roboto";
+}
