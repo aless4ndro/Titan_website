@@ -1,48 +1,48 @@
 //progress
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {//Dom connexion full  load
 (() => {
-    var progressBar = document.querySelector(".progress");
+    var progressBar = document.querySelector(".progress");//progress bar
 
-    for (i = 0; i < 100; i++){
-        let span = document.createElement("span");
-        span.style.setProperty("--i", i);
-        progressBar.append(span);
+    for (i = 0; i < 100; i++){//boucle pour créer les 100 span
+        let span = document.createElement("span");//création des span
+        span.style.setProperty("--i", i);//ajout de la variable i dans le css
+        progressBar.append(span);//ajout des span dans la progress bar
     }
 })();
 
 // List of audio elements
-let audios = document.querySelectorAll("audio");
-console.log(audios);
+let audios = document.querySelectorAll("audio");//récupération de tous les éléments audio
+console.log(audios);//affichage des éléments audio
 
 // Index of the current audio
 let currentAudioIndex = 0;
 
 // Get the current audio element
-function currentAudio() {
-    return audios[currentAudioIndex];
+function currentAudio() {//fonction pour récupérer l'audio actuel
+    return audios[currentAudioIndex];//retourne l'audio actuel
 }
 
 // Function to update the time
 function updateTime() {
     // Update the current time display
-    let currentTimeDisplay = document.querySelector(".current");
-    let currentAudio = audios[currentAudioIndex];
-    currentTimeDisplay.textContent = timeFormat(currentAudio.currentTime);
+    let currentTimeDisplay = document.querySelector(".current");//récupération de l'élément current
+    let currentAudio = audios[currentAudioIndex];//récupération de l'audio actuel
+    currentTimeDisplay.textContent = timeFormat(currentAudio.currentTime);//affichage du temps actuel
     
     // Update the progress bar
-    let position = Math.floor((currentAudio.currentTime * 100) / currentAudio.duration);
-    list_span[position].classList.add("active");
+    let position = Math.floor((currentAudio.currentTime * 100) / currentAudio.duration);//calcul de la position de la barre de progression
+    list_span[position].classList.add("active");//ajout de la classe active à la span correspondante
 }
 
 // Function to reset the player
 function resetPlayer() {
     // Reset the time display
-    let currentTimeDisplay = document.querySelector(".current");
-    currentTimeDisplay.textContent = "0:00";
+    let currentTimeDisplay = document.querySelector(".current");//récupération de l'élément current
+    currentTimeDisplay.textContent = "0:00";//remise à zéro du temps actuel
     
     // Reset the progress bar
-    list_span.forEach((e) => {
-        e.classList.remove("active");
+    list_span.forEach((e) => {//boucle pour enlever la classe active à toutes les span
+        e.classList.remove("active");//enlève la classe active
     })
 }
 
@@ -58,22 +58,22 @@ function nextAudio() {
 // Update the audio element event listeners when the current audio changes
 function updateAudio() {
     // Remove event listeners from all audio elements
-    audios.forEach((audio) => {
-        audio.removeEventListener("timeupdate", updateTime);
+    audios.forEach((audio) => {//boucle pour enlever les event listeners
+        audio.removeEventListener("timeupdate", updateTime);//enlève l'event listener
         audio.removeEventListener("ended", resetPlayer);
     });
 
     // Add event listeners to the current audio element
-    let audio = currentAudio();
-    if (audio) {
-        audio.addEventListener("timeupdate", updateTime);
-        audio.addEventListener("ended", resetPlayer);
+    let audio = currentAudio();//récupération de l'audio actuel
+    if (audio) {//si l'audio existe
+        audio.addEventListener("timeupdate", updateTime);//ajout de l'event listener
+        audio.addEventListener("ended", resetPlayer);//ajout de l'event listener
     }
-    console.log("Mise à jour de l'audio, titre actuel : " + titles[currentAudioIndex]);
-    let songTitleName = document.querySelector(".song-title");
-    songTitleName.textContent = titles[currentAudioIndex];
+    console.log("Mise à jour de l'audio, titre actuel : " + titles[currentAudioIndex]);//affichage du titre de l'audio actuel
+    let songTitleName = document.querySelector(".song-title");//récupération de l'élément song-title
+    songTitleName.textContent = titles[currentAudioIndex];//affichage du titre de l'audio actuel
 
-    console.log("Mise à jour de l'audio, titre actuel : " + titles[currentAudioIndex]);
+    console.log("Mise à jour de l'audio, titre actuel : " + titles[currentAudioIndex]);//affichage du titre de l'audio actuel
 
     
 }
@@ -84,37 +84,37 @@ updateAudio();
 /**
  * Audio player controls
  */
-let play_pause = document.querySelector(".play_pause");
-let duration = document.querySelector(".duration");
-let current = document.querySelector(".current");
-let list_span = document.querySelectorAll(".progress span");
-let volume_span = document.querySelectorAll(".volume span");
+let play_pause = document.querySelector(".play_pause");//récupération de l'élément play_pause
+let duration = document.querySelector(".duration");//récupération de l'élément duration
+let current = document.querySelector(".current");//récupération de l'élément current
+let list_span = document.querySelectorAll(".progress span");//récupération de tous les éléments span
+let volume_span = document.querySelectorAll(".volume span");//récupération de tous les éléments span
 
-let timeFormat = (time) => {
-    let second = Math.floor(time % 60);
-    let minute = Math.floor((time / 60) % 60);
-    if (second < 10) {
-        second = "0" + second;
+let timeFormat = (time) => {//fonction pour formater le temps
+    let second = Math.floor(time % 60);//calcul des secondes
+    let minute = Math.floor((time / 60) % 60);//calcul des minutes
+    if (second < 10) {//si les secondes sont inférieures à 10
+        second = "0" + second;//ajout d'un 0 devant
     }
 
-    time = minute + ":" + second;
+    time = minute + ":" + second;//formatage du temps en minute:seconde
     return time;
 };
  
 // Update duration when metadata is loaded
-currentAudio().addEventListener("loadedmetadata", () => {
-    duration.textContent = timeFormat(currentAudio().duration);
+currentAudio().addEventListener("loadedmetadata", () => {//quand les métadonnées sont chargées
+    duration.textContent = timeFormat(currentAudio().duration);//affichage de la durée
 });
 
-play_pause.addEventListener("click", () => { 
-    let iBtn = document.querySelector(".play_pause i");
+play_pause.addEventListener("click", () => { //quand on clique sur play_pause
+    let iBtn = document.querySelector(".play_pause i");//récupération de l'élément i
 
-    if (currentAudio().paused) {
-        currentAudio().play();
-        iBtn.classList.replace("bx-play-circle", "bx-pause-circle");
+    if (currentAudio().paused) {//si l'audio est en pause
+        currentAudio().play();//lecture de l'audio
+        iBtn.classList.replace("bx-play-circle", "bx-pause-circle");//remplacement de l'icone play par pause
     } else {
-        currentAudio().pause();
-        iBtn.classList.replace("bx-pause-circle", "bx-play-circle");
+        currentAudio().pause();//pause de l'audio
+        iBtn.classList.replace("bx-pause-circle", "bx-play-circle");//remplacement de l'icone pause par play
     }
 });
 
@@ -151,21 +151,21 @@ volume_span.forEach((element) => {
 /**
  * Seeking
  */
-list_span.forEach((element, index) => {
-    element.addEventListener("click", (e) => {
+list_span.forEach((element, index) => {//boucle pour chaque élément span
+    element.addEventListener("click", (e) => {//quand on clique sur l'élément
         //remove active classes
-        list_span.forEach((e) => {
-            e.classList.remove("active");
+        list_span.forEach((e) => {//boucle pour enlever la classe active à toutes les span
+            e.classList.remove("active");//enlève la classe active
         })
 
         //add active class to selected range
-        for (k = 0; k <= index; k++){
-            list_span[k].classList.add("active");
+        for (k = 0; k <= index; k++){//boucle pour ajouter la classe active à toutes les span jusqu'à l'index
+            list_span[k].classList.add("active");//ajoute la classe active
         }
 
         //set current time
-        let time_go = (index * currentAudio().duration) / 100;
-        currentAudio().currentTime = time_go;
+        let time_go = (index * currentAudio().duration) / 100;//calcul du temps
+        currentAudio().currentTime = time_go;//définition du temps
     })
     
 });

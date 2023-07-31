@@ -52,36 +52,6 @@
     word-wrap: break-word;
 }
 
-@media screen and (max-width: 768px) {
-    .btn {
-        width: 200px;
-        font-size: 20px;
-    }
-
-    .card-title {
-        font-size: 40px;
-    }
-
-    .card-body {
-        height: 400px;
-        justify
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .btn {
-        width: 150px;
-        font-size: 15px;
-    }
-
-    .card-title {
-        font-size: 30px;
-    }
-
-    .card-body {
-        height: 300px;
-    }
-}
  .music-icon {
     position: fixed;
     top: 10px;
@@ -93,6 +63,16 @@
     z-index: 100;
  }
 
+ @media screen and (max-width: 767px) {
+    .card-title {
+        font-size: 30px;
+    }
+
+    .btn {
+        width: 200px;
+        font-size: 20px;
+    }
+ }
 
 
 
