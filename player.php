@@ -9,9 +9,9 @@ include('config.php');
 if (isset($_GET['id'])) { // Si aucun ID n'est passé dans l'URL, rediriger vers la page principale
     $album_id = $_GET['id']; // Récupérer l'ID de l'album dans l'URL
 
-    $stmt = $conn->prepare("SELECT * FROM albums WHERE id = ?");
-    $stmt->execute([$album_id]);
-    $album = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conn->prepare("SELECT * FROM albums WHERE id = ?");// Récupérer l'album
+    $stmt->execute([$album_id]);// On utilise la méthode execute() pour exécuter notre requête
+    $album = $stmt->fetch(PDO::FETCH_ASSOC);// On utilise la méthode fetch() pour récupérer les données de la requête
 
     $stmt = $conn->prepare("SELECT * FROM audio WHERE album_id = ?"); // Récupérer les audios de l'album
     $stmt->execute([$album_id]);

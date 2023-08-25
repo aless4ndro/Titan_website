@@ -8,7 +8,7 @@ include('config.php');
 
 
 
-$stmt = $conn->prepare("SELECT * FROM audio WHERE lecteur = 1 ORDER BY position");
+$stmt = $conn->prepare("SELECT * FROM audio WHERE lecteur = 1 ORDER BY position");//On récupère les audios de la playlist
 $stmt->execute();
 $audios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

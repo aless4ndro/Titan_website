@@ -24,11 +24,6 @@ function currentAudio() {//fonction pour récupérer l'audio actuel
 
 // Function to update the time
 function updateTime() {
-    // Update the current time display
-    let currentTimeDisplay = document.querySelector(".current");//récupération de l'élément current
-    let currentAudio = audios[currentAudioIndex];//récupération de l'audio actuel
-    currentTimeDisplay.textContent = timeFormat(currentAudio.currentTime);//affichage du temps actuel
-    
     // Update the progress bar
     let position = Math.floor((currentAudio.currentTime * 100) / currentAudio.duration);//calcul de la position de la barre de progression
     list_span[position].classList.add("active");//ajout de la classe active à la span correspondante
@@ -223,14 +218,12 @@ window.addEventListener('timeupdate', saveCurrentAudioState);
 function saveCurrentAudioState() {
     localStorage.setItem('currentAudioIndex', currentAudioIndex);
     localStorage.setItem('currentTime', currentAudio().currentTime);
-    console.log("Valeurs stockées : ", localStorage.getItem('currentAudioIndex'), localStorage.getItem('currentTime'));
 }
 
 // Lorsque la page est chargée, récupérer l'index de l'audio actuel et la position de lecture actuelle et les utiliser
 window.addEventListener('load', function() {
     if (localStorage.getItem('currentAudioIndex')) {
         currentAudioIndex = Number(localStorage.getItem('currentAudioIndex'));
-        console.log("Index de l'audio actuel : " + currentAudioIndex);
     }
 
     // Si l'index de l'audio actuel est supérieur ou égal à la longueur de la liste des audios, le ramener à 0
